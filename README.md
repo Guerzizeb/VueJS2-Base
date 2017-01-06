@@ -1,5 +1,5 @@
-# client
-
+# Client
+* A VueJS 2 Based Application, with token based authentication to API server (laravel 5.3).
 > Client side for Laravel with Vuejs
 
 ## Build Setup
