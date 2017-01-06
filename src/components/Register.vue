@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+  <div id="register">
     <section class="hero is-warning">
       <div class="hero-body">
         <div class="container">

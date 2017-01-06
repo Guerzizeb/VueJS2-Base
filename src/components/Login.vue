@@ -1,6 +1,5 @@
 <template>
-  <div id="home">
-    
+  <div id="login">
     <section class="hero is-danger">
       <div class="hero-body">
         <div class="container">
@@ -34,12 +33,12 @@
 
 <script>
   import { apiDomain, getHeader } from './../config.js'
-  import { clientId, clientSecret } from './../env.js'
+  import { clientId, clientSecret, authEmail, authPassword } from './../env.js'
   export default {
     data () {
       return {
-        email: 'guerzizeb@gmail.com',
-        password: '',
+        email: authEmail,
+        password: authPassword,
         message: ''
       }
     },
@@ -66,6 +65,7 @@
                   authUser.name = response.data.name
                   authUser.email = response.data.email
                   window.localStorage.setItem('authUser', JSON.stringify(authUser))
+                  this.$store.dispatch('setAuthUser', authUser)
                   this.$router.push({name: 'dashboard'})
                 })
             }

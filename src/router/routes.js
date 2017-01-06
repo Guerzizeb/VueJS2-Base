@@ -5,7 +5,7 @@ import Register from './../components/Register'
 import Dashboard from './../components/Dashboard'
 
 export default [
-  {path: '/home', component: Home, name: 'home'},
+  {path: '/', component: Home, name: 'home'},
   {path: '/about', component: About, name: 'about'},
   {path: '/login', component: Login, name: 'login'},
   {path: '/register', component: Register, name: 'register'},
