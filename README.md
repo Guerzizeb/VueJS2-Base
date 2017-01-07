@@ -8,10 +8,12 @@ A VueJS 2 Based Application, with token based authentication to API server (lara
 ## Build Setup
 
 ``` bash
-# download the project
+# download the project with git
 git clone git@gitlab.com:Laravel-VueJS-Client-Server/Client.git app_name
+
 # change to project directory
 cd some_dir
+
 # install dependencies
 npm install
 
