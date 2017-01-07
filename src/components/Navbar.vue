@@ -32,28 +32,30 @@
       <router-link :to="{name: 'about'}" class="nav-item is-tab">About</router-link>
 
       <span class="nav-item" v-if="userStore.authUser == null || userStore.authUser.access_token === null">
-          <router-link :to="{name: 'login'}" class="button">
-              <span class="icon">
-              <i class="fa fa-lock"></i>
-            </span>
-            <span>Login</span>
-          </router-link>
+        <router-link :to="{name: 'login'}" class="button">
+          <span class="icon">
+            <i class="fa fa-lock"></i>
+          </span>
+          <span>Login</span>
+        </router-link>
 
-          <router-link :to="{name: 'register'}" class="button is-primary">
-            <span class="icon">
-              <i class="fa fa-edit"></i>
-            </span>
-            <span>Register</span>
-          </router-link>
-        </span>
-        <span class="nav-item" v-else>
-          <a class="button is-danger" href="#" @click.prevent="logout">
-            <span class="icon">
-              <i class="fa fa-lock"></i>
-            </span>
-            <span>Logout</span>
-          </a>
-        </span>
+        <router-link :to="{name: 'register'}" class="button is-primary">
+          <span class="icon">
+            <i class="fa fa-edit"></i>
+          </span>
+          <span>Register</span>
+        </router-link>
+      </span>
+
+      <span class="nav-item" v-else>
+        <router-link :to="{name: 'dashboard'}" class="button">Dashboard</router-link>
+        <a class="button is-danger" href="#" @click.prevent="logout">
+          <span class="icon">
+            <i class="fa fa-lock"></i>
+          </span>
+          <span>Logout</span>
+        </a>
+      </span>
     </div>
   </nav>
 </template>

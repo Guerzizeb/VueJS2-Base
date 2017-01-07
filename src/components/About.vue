@@ -12,12 +12,23 @@
     <section>
       <div class="container">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, ex, doloremque. Dolore minima illum magnam quisquam, mollitia, consequuntur dignissimos reiciendis soluta vel quidem fuga voluptatem nemo numquam, veniam molestiae quod.</p>
+        <button @click="postData" class="button">Test Post Event</button>
       </div>
     </section>
   </div>
 </template>
 
 <script>
-	export default {
-	}
+  import {apiDomain, getHeader} from './../config'
+
+  export default {
+    methods: {
+      postData () {
+        this.$http.post(apiDomain + '/user', {headers: getHeader()})
+          .then(response => {
+            console.log('Data is here', response)
+          })
+      }
+    }
+  }
 </script>

@@ -1,10 +1,11 @@
-export const apiDomain = 'http://localhost:8000'
+export const domain = 'http://localhost:8000'
+export const apiDomain = domain + '/api'
+
 export const getHeader = function () {
-  const tokenData = JSON.parse(window.localStorage.getItem('authUser'))
+  const authUser = JSON.parse(window.localStorage.getItem('authUser'))
   const headers = {
     'Accept': 'application/json',
-    'Authorization': 'Bearer ' + tokenData.access_token
+    'Authorization': 'Bearer ' + authUser.access_token
   }
-
   return headers
 }

@@ -32,8 +32,8 @@
 </template>
 
 <script>
-  import { apiDomain, getHeader } from './../config.js'
-  import { clientId, clientSecret, authEmail, authPassword } from './../env.js'
+  import { apiDomain, getHeader } from './../config'
+  import { authEmail, authPassword } from './../env'
   export default {
     data () {
       return {
@@ -45,32 +45,27 @@
     methods: {
       login () {
         const data = {
-          grant_type: 'password',
-          client_id: clientId,
-          client_secret: clientSecret,
-          username: this.email,
-          password: this.password,
-          scope: ''
+          email: this.email,
+          password: this.password
         }
 
-        this.$http.post(apiDomain + '/oauth/token', data)
+        this.$http.post(apiDomain + '/login', data)
           .then(response => {
-            if (response.status === 200) {
-              const authUser = {}
-              authUser.access_token = response.data.access_token
-              authUser.refresh_token = response.data.refresh_token
-              window.localStorage.setItem('authUser', JSON.stringify(authUser))
-              this.$http.get(apiDomain + '/api/user', {headers: getHeader()})
-                .then(response => {
-                  authUser.name = response.data.name
-                  authUser.email = response.data.email
-                  window.localStorage.setItem('authUser', JSON.stringify(authUser))
-                  this.$store.dispatch('setAuthUser', authUser)
-                  this.$router.push({name: 'dashboard'})
-                })
-            }
-          }, response => {
-            this.message = response.body.error
+            console.log('user ', response)
+            const authUser = {}
+            authUser.access_token = response.data.token
+            window.localStorage.setItem('authUser', JSON.stringify(authUser))
+
+            this.$http.get(apiDomain + '/user', {headers: getHeader()})
+              .then(response => {
+                authUser.name = response.data.name
+                authUser.email = response.data.email
+                window.localStorage.setItem('authUser', JSON.stringify(authUser))
+                this.$store.dispatch('setAuthUser', authUser)
+                this.$router.push({name: 'dashboard'})
+              })
+          }, error => {
+            console.log(error)
           })
       }
     }

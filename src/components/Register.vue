@@ -37,26 +37,42 @@
           <button class="button is-primary" @click="register">Register</button>
         </p>
         
-        <pre>
+        <p id="error">
           {{ message }}
-        </pre>
+        </p>
       </div>
     </section>
   </div>
 </template>
 
 <script>
+import {apiDomain} from './../config'
 export default {
   data () {
     return {
-      user: {name: '', password: '', passwordConfirmation: ''},
+      user: {name: 'Karim Rouabah', email: 'karim@dim24.dz', password: '123456', passwordConfirmation: '123456'},
       message: ''
     }
   },
   methods: {
     register () {
-      this.message = 'Registered'
+      if (this.user.password === this.user.passwordConfirmation) {
+        this.$http.post(apiDomain + '/register', this.user)
+          .then(response => {
+            this.message = response.data.message
+          }, error => {
+            this.message = error.data.message
+          })
+      } else {
+        this.message = 'Please check password confirmation!'
+      }
     }
   }
 }
 </script>
+
+<style>
+  #error {
+    font-color: red;
+  }
+</style>
