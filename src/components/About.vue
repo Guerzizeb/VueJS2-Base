@@ -12,16 +12,6 @@
 </template>
 
 <script>
-  import {apiDomain, getHeader} from './../config'
-
   export default {
-    methods: {
-      postData () {
-        this.$http.post(apiDomain + '/user', {headers: getHeader()})
-          .then(response => {
-            console.log('Data is here', response)
-          })
-      }
-    }
   }
 </script>

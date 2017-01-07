@@ -1,5 +1,5 @@
 <template>
-  <div class="panel panel-default" id="edit-user">
+  <div class="panel panel-primary" id="edit-user">
     <div class="panel-heading">
       <i class="fa fa-edit"></i> User edition
     </div>
@@ -9,6 +9,12 @@
       </div>
 
       <form class="form-horizontal" @submit.prevent="save">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Id</label>
+          <div class="col-sm-10">
+            <p class="form-control-static"><strong>{{ user.id }}</strong></p>
+          </div>
+        </div>
         <div class="form-group">
           <label for="name" class="col-sm-2 control-label">Name</label>
           <div class="col-sm-10">
@@ -51,7 +57,7 @@
         .then(response => {
           this.user = response.data.data
         }, response => {
-          console.log('Error', response)
+          console.log('User Edit > error', response)
         })
     }
   }

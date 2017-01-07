@@ -1,5 +1,5 @@
 <template>
-  <div class="panel panel-default" id="add-user">
+  <div class="panel panel-primary" id="add-user">
     <div class="panel-heading">
       <i class="fa fa-plus"></i> Add a new user
     </div>
