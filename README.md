@@ -3,6 +3,7 @@ A VueJS 2 Based Application, with token based authentication to API server (lara
 * VueJS 2
 * Rue-Resource to fetch data from server
 * Rue-Router for routing.
+* Bootstrap CSS framework
 
 ## Build Setup
 
