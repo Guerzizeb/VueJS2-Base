@@ -4,7 +4,13 @@
     <div class="jumbotron">
       <h1><i class="fa fa-book"></i> Welcome</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aut fugit id illum, natus officiis quisquam! Ad assumenda cum dignissimos ducimus earum, error ex maxime nulla, quos sunt tenetur voluptatibus.</p>
-      <p>
+
+      <p v-if="userStore.authUser">
+        <router-link class="btn btn-info btn-lg" :to="{name: 'dashboard'}" role="button">
+          <i class="fa fa-dashboard"></i> Goto dashboard
+        </router-link>
+      </p>
+      <p v-else>
         <router-link class="btn btn-primary btn-lg" :to="{name: 'login'}" role="button">
           <i class="fa fa-lock"></i> Login
         </router-link> OR
@@ -21,6 +27,17 @@
 </template>
 
 <script>
-	export default {
-	}
+  import {mapState} from 'vuex'
+
+  export default {
+
+    computed: {
+      ...mapState({
+        userStore: state => state.userStore
+      })
+    },
+
+    created () {
+    }
+  }
 </script>

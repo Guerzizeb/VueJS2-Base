@@ -70,8 +70,8 @@ export default {
           .then(response => {
             this.$router.push({name: 'login'})
           }, response => {
-            this.message = response.data.data.message
-            this.errors = response.data.data.form_validations
+            this.message = response.data.item.message
+            this.errors = response.data.item.form_validations
           })
       } else {
         this.passwordConfirmError = 'Please check password confirmation!'

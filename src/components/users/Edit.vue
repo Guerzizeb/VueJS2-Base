@@ -55,7 +55,7 @@
       let id = this.$route.params.id
       this.$http.get(apiDomain + '/users/' + id, { headers: getHeader() })
         .then(response => {
-          this.user = response.data.data
+          this.user = response.data.item
         }, response => {
           console.log('User Edit > error', response)
         })

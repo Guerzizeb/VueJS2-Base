@@ -36,7 +36,7 @@
     mounted () {
       this.$http.get(apiDomain + '/users', {headers: getHeader()})
           .then(response => {
-            this.users = response.data.data
+            this.users = response.data.items
             this.message = response.data.message
           }, response => {
             console.log('Users > error', response)
