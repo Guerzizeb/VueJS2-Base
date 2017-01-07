@@ -1,56 +1,18 @@
 <template>
-  <div id="dashboard">
-    <section class="hero is-primary">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">
-            Dashboard
-          </h1>
-        </div>
-      </div>
-    </section>
+  <div id="about" class="container">
+    <div class="page-header">
+      <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
+    </div>
 
-    <section>
-      <div class="container">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, ex, doloremque. Dolore minima illum magnam quisquam, mollitia, consequuntur dignissimos reiciendis soluta vel quidem fuga voluptatem nemo numquam, veniam molestiae quod.</p>
-        <button @click="postData" class="button">Test Post Event</button>
-        <p>Message : {{ message }}</p>
-        <ul>
-          <li v-for="user in users">{{ user.name }} {{ user.email }}</li>
-        </ul>
-      </div>
-    </section>
+    <div class="btn-group" role="group">
+      <router-link class="btn btn-default" :to="{name: 'users'}"><i class="fa fa-list"></i> Users</router-link>
+      <router-link class="btn btn-primary" :to="{name: 'add-user'}"><i class="fa fa-plus"></i> Add a new user</router-link>
+    </div>
+    <br><br>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import {apiDomain, getHeader} from './../config'
-  export default {
-    data () {
-      return {
-        users: [],
-        message: ''
-      }
-    },
-    mounted () {
-      this.$http.get(apiDomain + '/users', {headers: getHeader()})
-          .then(response => {
-            this.users = response.data.users
-            this.message = response.data.message
-          }, error => {
-            console.log('Dashboard > error', error)
-          })
-    },
-    methods: {
-      postData () {
-        this.$http.get(apiDomain + '/users', {headers: getHeader()})
-          .then(response => {
-            this.users = response.data.users
-            this.message = response.data.message
-          }, error => {
-            console.log('Dashboard > error', error)
-          })
-      }
-    }
-  }
+  export default {}
 </script>

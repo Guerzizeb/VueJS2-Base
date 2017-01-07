@@ -1,20 +1,13 @@
 <template>
-  <div id="about">
-    <section class="hero is-info">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">
-            About
-          </h1>
-        </div>
+  <div id="about" class="container">
+      <div class="page-header">
+        <h1>About</h1>
       </div>
-    </section>
-    <section>
-      <div class="container">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, ex, doloremque. Dolore minima illum magnam quisquam, mollitia, consequuntur dignissimos reiciendis soluta vel quidem fuga voluptatem nemo numquam, veniam molestiae quod.</p>
-        <button @click="postData" class="button">Test Post Event</button>
-      </div>
-    </section>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolorum enim ex labore optio provident voluptatum. Aliquid culpa dignissimos dolorum error, eveniet excepturi fugit, impedit possimus repudiandae sunt tempora voluptas.
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, aliquam dolorem, dolorum expedita facere fuga hic iure maiores nisi non, odio perferendis quaerat quos ratione voluptas! Cupiditate laboriosam minima possimus!</p>
   </div>
 </template>
 

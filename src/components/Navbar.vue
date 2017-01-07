@@ -1,63 +1,36 @@
 <template>
-  <nav class="nav">
-    <div class="nav-left">
-      <router-link :to="{name: 'home'}" class="nav-item is-brand" >
-        <img src="http://bulma.io/images/bulma-type.png" alt="Bulma logo">
-      </router-link>
-    </div>
-
-    <div class="nav-center">
-
-      <a class="nav-item" target="_blank" href="https://www.github.com/guerzizeb">
-          <span class="icon">
-            <i class="fa fa-github"></i>
-          </span>
-      </a>
-
-      <a class="nav-item" target="_blank" href="https://www.twitter.com/guerzizeb">
-          <span class="icon">
-            <i class="fa fa-twitter"></i>
-          </span>
-      </a>
-    </div>
-
-    <span class="nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
-
-    <div class="nav-right nav-menu">
-      <router-link :to="{name: 'home'}" class="nav-item is-tab">Home</router-link>
-      <router-link :to="{name: 'about'}" class="nav-item is-tab">About</router-link>
-
-      <span class="nav-item" v-if="userStore.authUser == null || userStore.authUser.access_token === null">
-        <router-link :to="{name: 'login'}" class="button">
-          <span class="icon">
-            <i class="fa fa-lock"></i>
-          </span>
-          <span>Login</span>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <router-link :to="{name: 'home'}" class="navbar-brand" >
+          <i class="fa fa-book"></i> ContactManager
         </router-link>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><router-link :to="{name: 'about'}">About</router-link></li>
+        </ul>
 
-        <router-link :to="{name: 'register'}" class="button is-primary">
-          <span class="icon">
-            <i class="fa fa-edit"></i>
-          </span>
-          <span>Register</span>
-        </router-link>
-      </span>
+        <ul class="nav navbar-nav navbar-right" v-if="userStore.authUser == null || userStore.authUser.access_token === null">
+          <li><router-link :to="{name: 'login'}" ><i class="fa fa-lock"></i> Login</router-link></li>
+          <li><router-link :to="{name: 'register'}"><i class="fa fa-edit"></i> Register</router-link></li>
+        </ul>
 
-      <span class="nav-item" v-else>
-        <router-link :to="{name: 'dashboard'}" class="button">Dashboard</router-link>
-        <a class="button is-danger" href="#" @click.prevent="logout">
-          <span class="icon">
-            <i class="fa fa-lock"></i>
-          </span>
-          <span>Logout</span>
-        </a>
-      </span>
+        <ul class="nav navbar-nav navbar-right" v-else>
+          <li><router-link :to="{name: 'dashboard'}"><i class="fa fa-dashboard"></i> Dashboard</router-link></li>
+          <li><a href="#" @click.prevent="logout">Logout ({{ userStore.authUser.name }})</a></li>
+        </ul>
+
+      </div>
     </div>
   </nav>
+
 </template>
 
 <script>

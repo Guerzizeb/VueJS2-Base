@@ -1,20 +1,12 @@
 <template>
-  <div id="home">
-    <section class="hero is-primary">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">
-            Welcome
-          </h1>
-        </div>
-      </div>
-    </section>
+  <div class="container">
+    <div class="page-header">
+      <h1><i class="fa fa-book"></i> Welcome</h1>
+    </div>
 
-    <section>
-      <div class="container">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, ex, doloremque. Dolore minima illum magnam quisquam, mollitia, consequuntur dignissimos reiciendis soluta vel quidem fuga voluptatem nemo numquam, veniam molestiae quod.</p>
-      </div>
-    </section>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto autem blanditiis culpa ipsa sit? A beatae corporis culpa dolor impedit minima minus nesciunt officia quae quibusdam, repellat sequi tempore, veritatis!
+    </p>
   </div>
 </template>
 
