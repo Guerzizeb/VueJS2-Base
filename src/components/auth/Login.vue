@@ -7,20 +7,20 @@
     <div class="panel panel-primary">
       <div class="panel-heading">Please authenticate your self</div>
       <div class="panel-body">
-        <div class="alert alert-danger" v-show="message">
-          {{ message }}
+        <div class="alert alert-danger" role="alert" v-show="message">
+          <strong>Error!</strong> {{ message }}
         </div>
         <form class="form-horizontal" @submit.prevent="login">
           <div class="form-group">
             <label for="email" class="col-sm-2 control-label">Email</label>
             <div class="col-sm-10">
-              <input class="form-control" id="email" type="email" placeholder="Your email" v-model="email">
+              <input class="form-control" id="email" type="email" placeholder="Your email" v-model="email" required>
             </div>
           </div>
           <div class="form-group">
             <label for="password" class="col-sm-2 control-label">Password</label>
             <div class="col-sm-10">
-              <input type="password" id="password" class="form-control" placeholder="Password" v-model="password">
+              <input type="password" id="password" class="form-control" placeholder="Password" v-model="password" required>
             </div>
           </div>
           <div class="form-group">

@@ -1,8 +1,8 @@
 # Client
 A VueJS 2 Based Application, with token based authentication to API server (laravel 5.3).
 * VueJS 2
-* Rue-Resource to fetch data from server
-* Rue-Router for routing.
+* Rue-Resource
+* Rue-Router
 * Bootstrap CSS framework
 
 ## Build Setup
