@@ -1,7 +1,7 @@
 <template>
   <div id="about" class="container">
       <div class="page-header">
-        <h1>About</h1>
+        <h1><i class="fa fa-sticky-note-o"></i> About</h1>
       </div>
 
       <p>

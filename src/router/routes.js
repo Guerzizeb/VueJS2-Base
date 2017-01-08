@@ -18,7 +18,7 @@ export default [
     name: 'dashboard',
     children: [
       {path: '/users', name: 'users', component: Users, meta: {requiresAuth: true}},
-      {path: '/users/add', name: 'add-user', component: AddUser, meta: {requiresAuth: true}},
+      {path: '/users/add', name: 'add-user', component: AddUser, meta: {requiresAuth: false}},
       {path: '/users/edit/:id', name: 'edit-user', component: EditForm, meta: {requiresAuth: true}}
     ]
   }

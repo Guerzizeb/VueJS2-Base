@@ -7,7 +7,7 @@
 
       <p v-if="userStore.authUser">
         <router-link class="btn btn-info btn-lg" :to="{name: 'dashboard'}" role="button">
-          <i class="fa fa-dashboard"></i> Goto dashboard
+          <i class="fa fa-dashboard"></i> Go to dashboard
         </router-link>
       </p>
       <p v-else>
