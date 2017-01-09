@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 /*
-import * as actions from './actions'
-import * as mutations from './mutations'
-*/
-import userStore from './modules/users'
+ import * as actions from './actions'
+ import * as mutations from './mutations'
+ */
+import userStore from './modules/auth'
 
 Vue.use(Vuex)
 

@@ -1,13 +1,17 @@
 <template>
   <div class="panel panel-primary" id="add-user">
 
-    <div class="panel-heading">Please fill the form</div>
+    <div class="panel-heading">Add a new user</div>
 
     <div class="panel-body">
 
       <div :class="cssMessage" role="alert" v-show="message">
         {{ message }}
       </div>
+
+      <p>
+        Please fill the form
+      </p>
 
       <form class="form-horizontal" @submit.prevent="register">
 

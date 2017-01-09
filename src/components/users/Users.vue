@@ -12,15 +12,21 @@
         <td>{{ user.name }}</td>
         <td><a :href="'mailto:' + user.email">{{ user.email }}</a></td>
         <td>
+
           <div class="btn-group" role="group">
+
             <router-link :to="{name: 'edit-user', params: { id: user.id }}" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</router-link>
-            <button @click="deleteUser(user)" class="btn btn-danger btn-xs" v-if="userStore.authUser.email !== user.email">
+
+            <button @click="deleteUser(user)" class="btn btn-danger btn-xs" v-if="authUser.email !== user.email">
               <i class="fa fa-trash"></i> Delete
             </button>
+
             <button v-else title="Cannot remove yoursef!" class="btn btn-warning btn-xs">
               <i class="fa fa-exclamation-triangle" ></i>
             </button>
+
           </div>
+
         </td>
       </tr>
       </tbody>
@@ -70,7 +76,7 @@
 
     computed: {
       ...mapState({
-        userStore: state => state.userStore
+        authUser: state => state.userStore.authUser
       })
     }
   }

@@ -1,13 +1,15 @@
 <template>
   <div class="panel panel-primary" id="edit-user">
     <div class="panel-heading">
-      <i class="fa fa-edit"></i> User edition
+      <i class="fa fa-edit"></i> User edit
     </div>
     <div class="panel-body">
       <div :class="cssMessage" v-show="message">
         {{ message }}
       </div>
-
+      <p>
+        Please fill the form bellow:
+      </p>
       <form class="form-horizontal" @submit.prevent="updateUser">
 
         <div class="form-group" :class="{'has-error': errors.name}">
@@ -94,7 +96,6 @@
       this.$http.get(apiDomain + '/users/' + id, { headers: getHeader() })
         .then(response => {
           this.user = response.data.item
-          console.log(this.user)
         }, response => {
           console.log('User Edit > error', response)
         })

@@ -35,8 +35,8 @@
 </template>
 
 <script>
-  import { apiDomain, getHeader } from './../../config'
   import { authEmail, authPassword } from './../../env'
+  import { apiDomain, getHeader } from './../../config'
   export default {
     data () {
       return {
@@ -45,14 +45,11 @@
         message: ''
       }
     },
-    methods: {
-      login () {
-        const data = {
-          email: this.email,
-          password: this.password
-        }
 
-        this.$http.post(apiDomain + '/login', data)
+    methods: {
+
+      login () {
+        this.$http.post(apiDomain + '/login', {email: this.email, password: this.password})
           .then(response => {
             const authUser = {}
             authUser.access_token = response.data.token

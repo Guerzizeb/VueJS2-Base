@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import router from './router/index'
-import store from './store'
 import VueSweetAlert from 'vue-sweetalert'
+import store from './store'
 
 Vue.use(VueResource)
 Vue.use(VueSweetAlert)
