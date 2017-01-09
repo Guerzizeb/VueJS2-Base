@@ -37,8 +37,8 @@
 </template>
 
 <script>
-  import { authEmail, authPassword } from './../../env'
-  import { apiDomain, getHeader } from './../../config'
+  import {authEmail, authPassword} from './../../env'
+  import {apiDomain} from './../../config'
   export default {
     data () {
       return {
@@ -55,20 +55,18 @@
           .then(response => {
             const authUser = {}
             authUser.access_token = response.data.token
+            authUser.name = response.data.user.name
+            authUser.email = response.data.user.email
+            authUser.role = response.data.user.role
             window.localStorage.setItem('authUser', JSON.stringify(authUser))
+            this.$store.dispatch('setAuthUser', authUser)
 
-            this.$http.get(apiDomain + '/user', {headers: getHeader()})
-              .then(response => {
-                authUser.name = response.data.name
-                authUser.email = response.data.email
-                window.localStorage.setItem('authUser', JSON.stringify(authUser))
-                this.$store.dispatch('setAuthUser', authUser)
-                if (this.$route.params.redirect_to) {
-                  this.$router.push({name: this.$route.params.redirect_to.name})
-                } else {
-                  this.$router.push({name: 'dashboard'})
-                }
-              })
+            if (this.$route.params.redirect_to) {
+              this.$router.push({name: this.$route.params.redirect_to.name})
+            } else {
+              this.$router.push({name: 'dashboard'})
+            }
+            window.localStorage.setItem('authUser', JSON.stringify(authUser))
           }, response => {
             this.message = response.data.message
           })

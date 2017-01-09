@@ -35,11 +35,6 @@
 <script>
   import {mapGetters} from 'vuex'
   export default{
-    data () {
-      return {
-        authUser: null
-      }
-    },
     methods: {
       logout () {
         window.localStorage.removeItem('authUser')

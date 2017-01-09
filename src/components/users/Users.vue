@@ -15,12 +15,12 @@
 
           <div class="btn-group" role="group">
 
-            <button @click="updateUser(user)" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Edit</button>
-            <button @click="deleteUser(user)" class="btn btn-danger btn-xs" v-if="authUser.email !== user.email">
+            <button @click="updateUser(user)" class="btn btn-info btn-xs" v-if="authUser.role === 'admin'"><i class="fa fa-edit"></i> Edit</button>
+            <button @click="deleteUser(user)" class="btn btn-danger btn-xs" v-if="authUser.role === 'admin' && authUser.email !== user.email">
               <i class="fa fa-trash"></i> Delete
             </button>
 
-            <button v-else title="Cannot remove yoursef!" class="btn btn-warning btn-xs">
+            <button v-if="authUser.role === 'admin' && authUser.email === user.email" title="Cannot remove yoursef!" class="btn btn-warning btn-xs">
               <i class="fa fa-exclamation-triangle" ></i>
             </button>
 
@@ -35,7 +35,7 @@
 
 <script>
   import {mapGetters} from 'vuex'
-  import {apiDomain, getHeader} from './../../config'
+  import {apiDomain} from './../../config'
 
   export default {
     methods: {
@@ -46,10 +46,9 @@
 
       deleteUser (user) {
         if (this.authUser.email !== user.email) {
-          this.$http.delete(apiDomain + '/users/' + user.id, {headers: getHeader()})
+          this.$http.delete(apiDomain + '/users/' + user.id)
             .then(response => {
               this.$store.dispatch('deleteUser', user)
-              console.log(this.users)
             }, response => {
               console.log(response)
             })
@@ -64,7 +63,7 @@
     },
 
     mounted () {
-      this.$http.get(apiDomain + '/users', {headers: getHeader()})
+      this.$http.get(apiDomain + '/users')
         .then(response => {
           this.$store.dispatch('setList', response.data.items)
         })

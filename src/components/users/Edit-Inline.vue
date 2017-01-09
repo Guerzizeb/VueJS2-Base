@@ -43,7 +43,7 @@
 </template>
 
 <script>
-  import {apiDomain, getHeader} from './../../config'
+  import {apiDomain} from './../../config'
   export default{
     data () {
       return {
@@ -60,7 +60,7 @@
         this.message = ''
         this.password_confirmation_error = ''
         if (this.user.password === this.user.password_confirmation) {
-          this.$http.put(apiDomain + '/users/' + this.user.id, this.user, {headers: getHeader()})
+          this.$http.put(apiDomain + '/users/' + this.user.id, this.user)
             .then(response => {
               this.errors = []
               this.cssMessage = 'alert alert-success'
@@ -82,7 +82,7 @@
     },
     mounted () {
       let id = this.$route.params.id
-      this.$http.get(apiDomain + '/users/' + id, { headers: getHeader() })
+      this.$http.get(apiDomain + '/users/' + id)
         .then(response => {
           this.user = response.data.item
         }, response => {

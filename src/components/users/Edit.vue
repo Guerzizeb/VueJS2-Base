@@ -56,7 +56,7 @@
 </template>
 
 <script>
-  import {apiDomain, getHeader} from './../../config'
+  import {apiDomain} from './../../config'
   export default{
     data () {
       return {
@@ -94,7 +94,7 @@
     },
     mounted: {
       let id = this.$route.params.id
-      this.$http.get(apiDomain + '/users/' + id, { headers: getHeader() })
+      this.$http.get(apiDomain + '/users/' + id)
         .then(response => {
           this.user = response.data.item
         }, response => {

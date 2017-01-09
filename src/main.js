@@ -9,6 +9,15 @@ Vue.use(VueSweetAlert)
 
 import App from './components/App'
 
+Vue.http.interceptors.push((request, next) => {
+  let authUser = JSON.parse(window.localStorage.getItem('authUser'))
+  if (authUser) {
+    request.headers.set('Authorization', 'Bearer ' + authUser.access_token)
+    request.headers.set('Accept', 'application/json')
+  }
+  next()
+})
+
 new Vue({
   components: { App },
   router,
