@@ -7,7 +7,9 @@ Vue.use(VueRouter)
 var router = new VueRouter({
   mode: 'history',
   saveScrollPosition: true,
-  linkActiveClass: 'is-active',
+  /*
+  linkActiveClass: 'active',
+  */
   routes
 })
 
@@ -17,7 +19,7 @@ router.beforeEach((to, from, next) => {
     if (authUser && authUser.access_token) {
       next()
     } else {
-      next({name: 'login'})
+      next({name: 'login', params: {redirect_to: to}})
     }
   }
   next()
