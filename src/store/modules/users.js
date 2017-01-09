@@ -1,46 +1,63 @@
-import Vue from 'vue'
-import { apiDomain, getHeader } from './../../config'
-
 const state = {
-  users: []
+  list: [],
+  currentUser: {}
 }
 
 const mutations = {
-  FETCH_USER (state) {
-    Vue.http.get(apiDomain + '/users', {headers: getHeader()})
-      .then(response => {
-        state.users = response.data.items
-      }, response => {
-        console.log('Users > error', response)
-      })
+  SET_LIST (state, list) {
+    state.list = list
+  },
+
+  UPDATE_USER (state, user) {
+    let updatedUser = state.list.find(u => u.id === user.id)
+    console.log('user', user)
+    console.log('updated user', updatedUser)
+    console.log(state.list)
+    updatedUser.name = user.name
+    updatedUser.email = user.email
   },
 
   ADD_USER (state, user) {
-    Vue.http.post(apiDomain + '/register', user)
-      .then(response => {
-        state.users.push(user)
-      })
-  },
-
-  UPDATE_USER (steta, user) {
-    Vue.http.put(apiDomain + '/users/' + this.user.id, this.user, {headers: getHeader()})
-      .then(response => {
-        let updatedUser = response.data.item
-        let u = state.users.find((u) => u.id === user.id)
-        u.name = updatedUser.name
-        u.email = updatedUser.email
-      })
+    state.list.push(user)
   },
 
   DELETE_USER (state, user) {
-    Vue.http.delete(apiDomain + '/users/' + user.id, {headers: getHeader()})
-      .then(response => {
-        let index = state.users.indexOf(user)
-        state.users.splice(index, 1)
-      })
+    let index = state.list.indexOf(user)
+    state.list.splice(index, 1)
+  },
+
+  SET_CURRENT_USER (state, user) {
+    state.currentUser = user
+  }
+}
+
+const getters = {
+  users: state => state.list,
+  currentUser: state => state.currentUser
+}
+
+const actions = {
+  setList: ({commit}, list) => {
+    commit('SET_LIST', list)
+  },
+
+  updateUser: ({commit}, user) => {
+    commit('UPDATE_USER', user)
+  },
+
+  addUser: ({commit}, user) => {
+    commit('ADD_USER', user)
+  },
+
+  deleteUser: ({commit}, user) => {
+    commit('DELETE_USER', user)
+  },
+
+  setCurrentUser: ({commit}, user) => {
+    commit('SET_CURRENT_USER', user)
   }
 }
 
 export default {
-  state, mutations
+  state, getters, actions, mutations
 }

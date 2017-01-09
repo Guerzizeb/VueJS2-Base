@@ -34,8 +34,13 @@
 </template>
 
 <script>
-  import {mapState} from 'vuex'
+  import {mapGetters} from 'vuex'
   export default{
+    data () {
+      return {
+        authUser: null
+      }
+    },
     methods: {
       logout () {
         window.localStorage.removeItem('authUser')
@@ -44,9 +49,9 @@
       }
     },
     computed: {
-      ...mapState({
-        authUser: state => state.userStore.authUser
-      })
+      ...mapGetters([
+        'authUser'
+      ])
     }
   }
 </script>

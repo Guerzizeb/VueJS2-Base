@@ -1,5 +1,5 @@
 <template>
-  <div class="panel panel-primary" id="add-user">
+  <div class="panel panel-info" id="add-user">
 
     <div class="panel-heading">Add a new user</div>
 
@@ -88,6 +88,7 @@
               this.user.password = ''
               this.user.password_confirmation = ''
               this.$swal('User created successfully!')
+              this.$store.dispatch('addUser', response.data.item)
             }, response => {
               this.cssMessage = 'alert alert-danger'
               this.message = response.data.message

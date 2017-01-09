@@ -13,13 +13,20 @@ export default [
   {path: '/about', component: About, name: 'about'},
   {path: '/login', component: Login, name: 'login'},
   {path: '/register', component: Register, name: 'register'},
-  {path: '/dashboard',
+  {path: '/admin',
     component: Dashboard,
     name: 'dashboard',
+    meta: {requiresAuth: true},
     children: [
-      {path: '/users', name: 'users', component: Users, meta: {requiresAuth: true}},
-      {path: '/users/add', name: 'add-user', component: AddUser, meta: {requiresAuth: false}},
-      {path: '/users/edit/:id', name: 'edit-user', component: EditForm, meta: {requiresAuth: true}}
+      {path: 'users',
+        name: 'users',
+        component: Users,
+        meta: {requiresAuth: true},
+        children: [
+          {path: 'add', name: 'add-user', component: AddUser, meta: {requiresAuth: true}},
+          {path: 'edit/:id', name: 'edit-user', component: EditForm, meta: {requiresAuth: true}}
+        ]
+      }
     ]
   }
 ]

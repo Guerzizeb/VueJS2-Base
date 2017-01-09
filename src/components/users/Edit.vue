@@ -1,5 +1,5 @@
 <template>
-  <div class="panel panel-primary" id="edit-user">
+  <div class="panel panel-default" id="edit-user">
     <div class="panel-heading">
       <i class="fa fa-edit"></i> User edit
     </div>
@@ -56,11 +56,12 @@
 </template>
 
 <script>
-  import { apiDomain, getHeader } from './../../config'
+  import {apiDomain, getHeader} from './../../config'
+  import {mapGetters} from 'vuex'
   export default{
     data () {
       return {
-        user: {name: '', email: '', password: '', password_confirmation: ''},
+        user: {},
         errors: [],
         message: '',
         password_confirmation_error: '',
@@ -80,6 +81,7 @@
               this.user.password = ''
               this.user.password_confirmation = ''
               this.$swal(this.message)
+              this.$store.dispatch('updateUser', this.user)
             }, response => {
               this.cssMessage = 'alert alert-danger'
               this.message = response.data.message
@@ -99,6 +101,12 @@
         }, response => {
           console.log('User Edit > error', response)
         })
+    },
+    computed: {
+      ...mapGetters({
+        user: 'currentUser'
+      })
     }
+
   }
 </script>

@@ -22,6 +22,10 @@ const actions = {
   }
 }
 
+const getters = {
+  authUser: state => state.authUser
+}
+
 export default {
-  state, mutations, actions
+  state, getters, actions, mutations
 }
