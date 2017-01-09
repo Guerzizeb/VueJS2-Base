@@ -1,6 +1,5 @@
 <template>
   <div class="panel panel-info" id="add-user">
-
     <div class="panel-heading">Add a new user</div>
 
     <div class="panel-body">

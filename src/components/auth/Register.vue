@@ -1,10 +1,12 @@
 <template>
-  <div id="register" class="container">
-    <div class="page-header">
-      <h1><i class="fa fa-edit"></i> Register a new user</h1>
+  <section id="register">
+    <div class="container">
+      <div class="page-header">
+        <h1><i class="fa fa-edit"></i> Register a new user</h1>
+      </div>
+      <add-user></add-user>
     </div>
-    <add-user></add-user>
-  </div>
+  </section>
 </template>
 
 <script>

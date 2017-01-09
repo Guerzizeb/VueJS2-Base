@@ -57,7 +57,6 @@
 
 <script>
   import {apiDomain, getHeader} from './../../config'
-  import {mapGetters} from 'vuex'
   export default{
     data () {
       return {
@@ -93,7 +92,7 @@
         }
       }
     },
-    created () {
+    mounted: {
       let id = this.$route.params.id
       this.$http.get(apiDomain + '/users/' + id, { headers: getHeader() })
         .then(response => {
@@ -101,11 +100,6 @@
         }, response => {
           console.log('User Edit > error', response)
         })
-    },
-    computed: {
-      ...mapGetters({
-        user: 'currentUser'
-      })
     }
 
   }
