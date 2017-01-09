@@ -6,25 +6,39 @@
 </template>
 
 <script>
-  import {mapState} from 'vuex'
   import Navbar from './Navbar'
+  import {apiDomain} from './../config'
 
   export default {
-
     components: {
       Navbar
     },
-
-    computed: {
-      ...mapState({
-        userStore: state => state.userStore
-      })
+    data () {
+      return {
+        authUser: {}
+      }
     },
 
     created () {
       console.log('Main App Component created!')
-      const userObj = JSON.parse(window.localStorage.getItem('authUser'))
-      this.$store.dispatch('setAuthUser', userObj)
+      let userObj = JSON.parse(window.localStorage.getItem('authUser'))
+      if (userObj) {
+        /*
+        Refresh token
+        */
+        console.log('Main App Component > Refreshing token')
+        this.$http.get(apiDomain + '/refresh-token', {headers: {Authorization: userObj.access_token}})
+          .then(response => {
+            let token = response.headers.get('Authorization')
+            userObj.access_token = token.replace('Bearer ', '')
+            window.localStorage.setItem('authUser', JSON.stringify(userObj))
+            this.$store.dispatch('setAuthUser', userObj)
+          }, response => {
+            console.error(response)
+          })
+      } else {
+        console.log('App > storage not contain token')
+      }
     }
   }
 </script>
